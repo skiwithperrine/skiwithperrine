@@ -3,8 +3,8 @@ title: Ski
 subtitle: With Perrine
 email: youremailaddress@gmail.com
 description: Discover the joy of skiing with Perrine.
-baseurl: "/skiwithperrine" # the subpath of your site, e.g. /blog
-url: ""
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "skiwithperrine.com"
 author: Perrine
 # street_address: 1234 Somewhere Road
 # city: Nashville
