@@ -42,6 +42,17 @@ markdown: kramdown
 sass:
   style: compressed
 
+adventure_images:
+  - pic9.jpeg
+  - pic10.jpeg
+  - pic11.jpeg
+  - pic12.jpeg
+  - pic13.jpeg
+  - pic14.jpeg
+  - pic15.jpeg
+  - pic16.jpeg
+  - pic17.jpeg
+
 exclude:
   - "*.gemspec"
   - LICENSE.md
