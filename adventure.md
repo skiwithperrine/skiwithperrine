@@ -37,6 +37,6 @@ Des cours de ski de qualité, adaptés à votre niveau et à vos objectifs. Que 
 
 </div>
 
-{% include image_grid.html images=site.data.images.adventure_images %}
+{% include image_grid.html images=site.adventure_images %}
 
 
