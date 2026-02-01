@@ -1,0 +1,8 @@
+<div class="box alt">
+    <div class="row 50% uniform">
+        {% for image_name in include.images %}
+        <div class="4u"><span class="image fit"><img src="{% link assets/images/{{ image_name }} %}" alt="" /></span>
+        </div>
+        {% endfor %}
+    </div>
+</div>

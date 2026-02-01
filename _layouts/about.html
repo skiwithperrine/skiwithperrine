@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html %}
+
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="{{ site.baseurl }}/{{ page.image }}" alt="">
+            </span>
+            <header class="major">
+
+                <h1>
+                    <span class="lang-en">{{ page.title }}</span>
+                    <span class="lang-fr">{{ page.title_fr | default: page.title }}</span>
+                </h1>
+
+            </header>
+            <div class="content">
+
+                <span class="lang-en">{{ page.description }}</span>
+                <span class="lang-fr">{{ page.description_fr | default: page.description }}</span>
+
+            </div>
+        </div>
+    </section>
+
+    {{ content }}
+
+    {% include footer.html %}
+
+</body>
+
+</html>

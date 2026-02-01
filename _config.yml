@@ -3,15 +3,20 @@ title: Ski
 subtitle: With Perrine
 email: youremailaddress@gmail.com
 description: Discover the joy of skiing with Perrine.
+description_fr: Découvrez le plaisir de skier avec Perrine.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "skiwithperrine.com"
+form_url: https://docs.google.com/forms/d/e/formResponse
 author: Perrine
-# street_address: 1234 Somewhere Road
-# city: Nashville
-# state: TN
-# zip_code: 55555
-# country: United States of America
-# phone: (716) 555-5555
+resorts:
+  - name: Saint Gervais les Bains
+    url: https://www.saintgervais.com
+  - name: Les Contamines
+    url: https://www.lescontamines.com
+  - name: Megeve
+    url: https://www.megeve-tourisme.fr
+  - name: Chamonix Mont-Blanc
+    url: https://www.chamonix.com
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
@@ -25,7 +30,7 @@ socials:
   GitHub:
   GitLab:
   Google-Plus:
-  Instagram: https://www.instagram.com/perrine__corre
+  Instagram: https://www.instagram.com/skiwithperrine
   LinkedIn:
   Twitter:
   Facebook:

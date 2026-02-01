@@ -1,7 +1,7 @@
 {% if 'posts' == site.tiles-source %}
-    {% assign tiles = site.posts %}
+{% assign tiles = site.posts | sort: 'tile_order' %}
 {% elsif 'pages' == site.tiles-source %}
-    {% assign tiles = site.html_pages | where_exp: "item", "item.show_tile != false" %}
+{% assign tiles = site.html_pages | where_exp: "item", "item.show_tile != false" | sort: 'tile_order' %}
 {% endif %}
 <section id="one" class="tiles">
   {% for tile in tiles limit:site.tiles-count %}
@@ -10,8 +10,16 @@
       <img src="{{ tile.image }}" alt="{{ tile.title }}" />
     </span>
     <header class="major">
-      <h3><a href="{{ tile.url  | relative_url }}" class="link">{{ tile.title }}</a></h3>
-      <p>{{ tile.description }}</p>
+      <h3>
+        <a href="{{ tile.url  | relative_url }}" class="link">
+          <span class="lang-en">{{ tile.title }}</span>
+          <span class="lang-fr">{{ tile.title_fr | default: tile.title }}</span>
+        </a>
+      </h3>
+      <p>
+        <span class="lang-en">{{ tile.description }}</span>
+        <span class="lang-fr">{{ tile.description_fr | default: tile.description }}</span>
+      </p>
     </header>
   </article>
   {% endfor %}

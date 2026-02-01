@@ -1,62 +1,95 @@
 <!-- Contact -->
 <section id="contact">
 	<div class="inner">
-		<section>
-			<form action="https://formspree.io/{{ site.email }}" method="POST">
+		<!-- <section>
+			<form action="{{ site.form_url }}" method="POST" target="_blank">
 				<div class="field half first">
-					<label for="name">Name</label>
-					<input type="text" name="name" id="name" />
+					<label for="name">
+						<span class="lang-en">Name</span>
+						<span class="lang-fr">Nom</span>
+					</label>
+					<input type="text" name="entry.1068910191" id="name" />
 				</div>
 				<div class="field half">
-					<label for="email">Email</label>
-					<input type="text" name="_replyto" id="email" />
+					<label for="email">
+						<span class="lang-en">Email</span>
+						<span class="lang-fr">Email</span>
+					</label>
+					<input type="text" name="entry.1876667865" id="email" />
 				</div>
 				<div class="field">
-					<label for="message">Message</label>
-					<textarea name="message" id="message" rows="6"></textarea>
+					<label for="message">
+						<span class="lang-en">Message</span>
+						<span class="lang-fr">Message</span>
+					</label>
+					<textarea name="entry.1892742123" id="message" rows="6"></textarea>
 				</div>
 				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="special" /></li>
-					<li><input type="reset" value="Clear" /></li>
+					<li>
+						<button type="submit" value="Send Message" class="special">
+							<span class="lang-en">Send Message</span>
+							<span class="lang-fr">Envoyer</span>
+						</button>
+					</li>
+					<li>
+						<input type="reset" value="Clear" class="lang-en-val" />
+						<input type="button" value="Effacer" class="lang-fr-val" onclick="this.form.reset()"
+							style="display:none;" />
+					</li>
 				</ul>
 			</form>
-		</section>
-		<section class="split">
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				function updateResetButton() {
+					var lang = document.body.getAttribute('data-lang') || 'en';
+					var resetEn = document.querySelector('.lang-en-val');
+					var resetFr = document.querySelector('.lang-fr-val');
+					if (resetEn && resetFr) {
+						if (lang === 'fr') {
+							resetEn.style.display = 'none';
+							resetFr.style.display = 'inline-block';
+						} else {
+							resetEn.style.display = 'inline-block';
+							resetFr.style.display = 'none';
+						}
+					}
+				}
+				// Initial check
+				updateResetButton();
+				// Listen for language changes if we have a custom event, or just rely on the main switch
+				// Re-using the logic from main.js to observer attribute changes could work, 
+				// but for now, let's just piggyback on the click listener if possible or use a MutationObserver
+				var observer = new MutationObserver(function (mutations) {
+					mutations.forEach(function (mutation) {
+						if (mutation.attributeName === "data-lang") {
+							updateResetButton();
+						}
+					});
+				});
+				observer.observe(document.body, { attributes: true });
+			});
+		</script>
+</section> -->
+		<section>
 			<section>
 				<div class="contact-method">
-					<span class="icon alt fa-envelope"></span>
-					<h3>Email</h3>
-					<a href="mailto:{{ site.email }}">{{ site.email }}</a>
-				</div>
-			</section>
-			<section>
-				<div class="contact-method">
-					<span class="icon alt fa-phone"></span>
-					<h3>Phone</h3>
-					<a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+					<span class="icon alt fa-instagram"></span>
+					<h3>Instagram</h3>
+					<a href="{{ site.socials.Instagram }}" target="_blank" rel="noopener noreferrer">@skiwithperrine</a>
 				</div>
 			</section>
 			<section>
 				<div class="contact-method">
 					<span class="icon alt fa-home"></span>
-					<h3>Address</h3>
-					<span>
-					{% if site.street_address %}
-					    {{ site.street_address }}<br />
+					<h3>Resorts</h3>
+					{% if site.resorts %}
+					<ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+						{% for resort in site.resorts %}
+						<li><a href="{{ resort.url }}" target="_blank" rel="noopener noreferrer">{{ resort.name }}</a>
+						</li>
+						{% endfor %}
+					</ul>
 					{% endif %}
-					{% if site.city %}
-					    {{ site.city }},
-					{% endif %}
-					{% if site.state %}
-					    {{ site.state }} 
-					{% endif %}
-					{% if site.zip_code %}
-					    {{ site.zip_code }}<br />
-					{% endif %}
-					{% if site.country %}
-					    {{ site.country }}
-					{% endif %}
-					</span>
 				</div>
 			</section>
 		</section>
@@ -64,35 +97,37 @@
 </section>
 
 <!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<ul class="icons">
-				{% for key_value in site.socials %}
-					{% if key_value[1] %}
-						<li>
-							<a href="{{ key_value[1] }}" class="icon alt fa-{{ key_value[0] | downcase }}" target="_blank" rel="noopener noreferrer" aria-label="{{ key_value[0] }}">
-								<span class="label">{{ key_value[0] }}</span>
-							</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-			<ul class="copyright">
-				<li>&copy; {{ site.title }} {{ site.subtitle }}</li>
-				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
-				<li>Jekyll integration: <a href="https://github.com/andrewbanchich" target="_blank">Andrew Banchich</a> (<a href="https://github.com/andrewbanchich/forty-jekyll-theme" target="_blank">Theme</a>)</li>
+<footer id="footer">
+	<div class="inner">
+		<ul class="icons">
+			{% for key_value in site.socials %}
+			{% if key_value[1] %}
+			<li>
+				<a href="{{ key_value[1] }}" class="icon alt fa-{{ key_value[0] | downcase }}" target="_blank"
+					rel="noopener noreferrer" aria-label="{{ key_value[0] }}">
+					<span class="label">{{ key_value[0] }}</span>
+				</a>
+			</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+		<ul class="copyright">
+			<li>&copy; {{ site.title }} {{ site.subtitle }}</li>
+			<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+			<li>Jekyll integration: <a href="https://github.com/andrewbanchich" target="_blank">Andrew Banchich</a> (<a
+					href="https://github.com/andrewbanchich/forty-jekyll-theme" target="_blank">Theme</a>)</li>
 
-			</ul>
-		</div>
-	</footer>
+		</ul>
+	</div>
+</footer>
 
 </div>
 
 <!-- Scripts -->
-	<script src="{{ "assets/js/jquery.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/jquery.scrolly.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/jquery.scrollex.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/skel.min.js" | absolute_url }}"></script>
-	<script src="{{ "assets/js/util.js" | absolute_url }}"></script>
-	<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
-	<script src="{{ "assets/js/main.js" | absolute_url }}"></script>
+<script src="{{ 'assets/js/jquery.min.js' | absolute_url }}"></script>
+<script src="{{ 'assets/js/jquery.scrolly.min.js' | absolute_url }}"></script>
+<script src="{{ 'assets/js/jquery.scrollex.min.js' | absolute_url }}"></script>
+<script src="{{ 'assets/js/skel.min.js' | absolute_url }}"></script>
+<script src="{{ 'assets/js/util.js' | absolute_url }}"></script>
+<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
+<script src="{{ 'assets/js/main.js' | absolute_url }}"></script>
