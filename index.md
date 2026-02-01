@@ -2,6 +2,7 @@
 layout: home
 title: Home
 landing-title: "Glide, learn, and conquer!"
+landing-title_fr: "Glissez, apprenez et conquérez!"
 description: null
 image: null
 author: null

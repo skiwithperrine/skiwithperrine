@@ -16,12 +16,21 @@
     <section id="banner" class="major">
         <div class="inner">
             <header class="major">
-                <h1>{{ page.landing-title }}</h1>
+                <h1>
+                    <span class="lang-en">{{ page.landing-title }}</span>
+                    <span class="lang-fr">{{ page.landing-title_fr | default: page.landing-title }}</span>
+                </h1>
             </header>
             <div class="content">
-                <p style="text-transform: uppercase;">{{ site.description }}</p>
+                <p style="text-transform: uppercase;">
+                    <span class="lang-en">{{ site.description }}</span>
+                    <span class="lang-fr">{{ site.description_fr | default: site.description }}</span>
+                </p>
                 <ul class="actions">
-                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
+                    <li><a href="#one" class="button next scrolly">
+                            <span class="lang-en">Get Started</span>
+                            <span class="lang-fr">Commencer</span>
+                        </a></li>
                 </ul>
             </div>
         </div>
@@ -37,12 +46,26 @@
         <section id="two">
             <div class="inner">
                 <header class="major">
-                    <h2>Massa libero</h2>
+                    <h2>
+                        <span class="lang-en">Follow me on Instagram</span>
+                        <span class="lang-fr">Suivez-moi sur Instagram</span>
+                    </h2>
                 </header>
-                <p>{{ content }}</p>
-                <ul class="actions">
-                    <li><a href="landing.html" class="button next">Get Started</a></li>
-                </ul>
+                <!-- Instagram Feed Placeholder -->
+                <div
+                    style="background: rgba(164, 164, 164, 0.431); padding: 2em; text-align: center; margin-bottom: 2em; border: 2px dashed rgba(255,255,255,0.2);">
+                    <iframe src="https://embedsocial.com/api/pro_hashtag/d7a5198b864ddc47edeeffbf92a6e3a6b535e735"
+                        width="100%" height="600px" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+                </div>
+                <!-- <ul class="actions">
+                    <li>
+                        <a href="{{ site.socials.Instagram }}" class="button" target="_blank">
+                            <i class="icon fa-instagram"></i>
+                            <span class="lang-en">Follow @perrine__corre</span>
+                            <span class="lang-fr">Suivre @perrine__corre</span>
+                        </a>
+                    </li>
+                </ul> -->
             </div>
         </section>
 

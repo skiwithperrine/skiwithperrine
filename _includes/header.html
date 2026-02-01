@@ -1,29 +1,45 @@
 <!-- Wrapper -->
 <div id="wrapper">
 
-<!-- Header -->
-<header id="header"{% if page.layout == "landing" %} class="alt style2"{% endif %}{% if page.layout == "home" %} class="alt"{% endif %}>
-	<a href="{{ "" | absolute_url }}/" class="logo"><strong>{{ site.title }}</strong> <span>{{ site.subtitle }}</span></a>
-	<nav>
-		<a href="#menu">Menu</a>
-	</nav>
-</header>
+	<!-- Header -->
+	<header id="header" {% if page.layout=="landing" %} class="alt style2" {% endif %}{% if page.layout=="home" %}
+		class="alt" {% endif %}>
+		<a href="{{ "" | absolute_url }}/" class="logo"><strong>{{ site.title }}</strong> <span>{{ site.subtitle
+				}}</span></a>
+		<nav>
+			<a href="#" class="lang-switch" data-lang="en" style="border:0; padding-right: 0.5em;">
+				<img src="{{ 'assets/images/flags/gb.svg' | absolute_url }}" alt="EN"
+					style="height: 12px; margin-right: 5px; vertical-align: middle;">EN</a>
+			<span style="vertical-align: middle;">|</span>
+			<a href="#" class="lang-switch" data-lang="fr" style="border:0; padding-left: 0.5em;">
+				<img src="{{ 'assets/images/flags/fr.svg' | absolute_url }}" alt="FR"
+					style="height: 12px; margin-right: 5px; vertical-align: middle;">FR</a>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
 
-<!-- Menu -->
-<nav id="menu">
-	<ul class="links">
-        {% for page in site.pages %}
-		    {% if page.layout == "home" %}
-		        <li><a href="{{ "" | absolute_url }}/">{{ page.title }}</a></li>
-	    	{% endif %}
-		{% endfor %}
-		{% for page in site.html_pages %}
-		    {% if page.layout != "home" and page.nav-menu == true %}
-		        <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
-		    {% endif %}
-		{% endfor %}
-	</ul>
-	<ul class="actions vertical">
-		<li><a href="#" class="button special fit">Get Started</a></li>
-	</ul>
-</nav>
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			{% for page in site.pages %}
+			{% if page.layout == "home" %}
+			<li><a href="{{ "" | absolute_url }}/">
+					<span class="lang-en">{{ page.title }}</span>
+					<span class="lang-fr">{{ page.title_fr | default: page.title }}</span>
+				</a></li>
+			{% endif %}
+			{% endfor %}
+			{% assign sorted_pages = site.html_pages | sort: 'nav_order' %}
+			{% for page in sorted_pages %}
+			{% if page.layout != "home" and page.nav-menu == true %}
+			<li><a href="{{ page.url | absolute_url }}">
+					<span class="lang-en">{{ page.title }}</span>
+					<span class="lang-fr">{{ page.title_fr | default: page.title }}</span>
+				</a></li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+		<ul class="actions vertical">
+			<li><a href="#" class="button special fit">Get Started</a></li>
+		</ul>
+	</nav>
